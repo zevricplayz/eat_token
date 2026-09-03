@@ -27,64 +27,51 @@
                     <div class="step">
                         <span class="step-number">1</span>
                         <div>
-                            <h3>Login with Your Account</h3>
-                            <p>Select a provider and complete Garena authentication</p>
+                            <h3>Get Your Callback URL</h3>
+                            <p>Login to Garena and get the callback URL with <code>?eat=</code> parameter from browser history</p>
                         </div>
                     </div>
                     <div class="step">
                         <span class="step-number">2</span>
                         <div>
-                            <h3>Find Callback URL</h3>
-                            <p>Look for URLs containing <code>/callback/?eat=</code> in browser history</p>
+                            <h3>Paste Callback URL</h3>
+                            <p>Copy the full URL and paste it in the input field below</p>
                         </div>
                     </div>
                     <div class="step">
                         <span class="step-number">3</span>
                         <div>
-                            <h3>Paste and Generate</h3>
-                            <p>Paste the callback URL and click "Generate Access Token"</p>
+                            <h3>Generate & Copy</h3>
+                            <p>Click "Generate Access Token" and copy your extracted tokens</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Login Providers -->
-            <section class="providers">
-                <h2>🔐 Select Provider & Login</h2>
-                <div class="provider-grid">
-                    <button class="provider-btn google" title="Login with Google">
-                        <i class="fab fa-google"></i>
-                        <span>Google</span>
-                    </button>
-                    <button class="provider-btn facebook" title="Login with Facebook">
-                        <i class="fab fa-facebook"></i>
-                        <span>Facebook</span>
-                    </button>
-                    <button class="provider-btn apple" title="Login with Apple">
-                        <i class="fab fa-apple"></i>
-                        <span>Apple</span>
-                    </button>
-                    <button class="provider-btn twitter" title="Login with X (Twitter)">
-                        <i class="fab fa-x-twitter"></i>
-                        <span>X (Twitter)</span>
-                    </button>
-                    <button class="provider-btn vk" title="Login with VK">
-                        <i class="fab fa-vk"></i>
-                        <span>VK</span>
+            <!-- Quick Test Section -->
+            <section class="test-section">
+                <h2>🧪 Quick Test</h2>
+                <p>Try with this example callback URL to test the tool:</p>
+                <div class="test-button-group">
+                    <button class="test-btn" onclick="fillTestURL()">
+                        <i class="fas fa-flask"></i> Load Example URL
                     </button>
                 </div>
             </section>
 
             <!-- Input Section -->
             <section class="input-section">
-                <h2>🔗 Paste Callback URL</h2>
+                <h2>🔗 Paste Your Callback URL</h2>
                 <div class="input-group">
-                    <textarea id="urlInput" class="url-input" placeholder="Paste your callback URL here...\n\nExample:\nhttps://api-ticket.ff.gameid.garena.co.id/oauth/callback/?eat=YOUR_EAT_TOKEN&lang=en&region=ID&account_id=123456&nickname=YourName" spellcheck="false"></textarea>
+                    <textarea id="urlInput" class="url-input" placeholder="Paste your callback URL here...
+
+Example:
+https://api-ticket.ff.gameid.garena.co.id/oauth/callback/?eat=abcd1234efgh5678ijkl9012mnop3456qrst7890uvwx1234yz&lang=en&region=ID&account_id=1234567890&nickname=YourNickname"></textarea>
                     <div class="button-group">
-                        <button id="generateBtn" class="btn btn-primary">
+                        <button id="generateBtn" class="btn btn-primary" onclick="generateToken()">
                             <i class="fas fa-magic"></i> Generate Access Token
                         </button>
-                        <button id="clearBtn" class="btn btn-secondary">
+                        <button id="clearBtn" class="btn btn-secondary" onclick="clearAll()">
                             <i class="fas fa-trash"></i> Clear
                         </button>
                     </div>
@@ -105,7 +92,7 @@
                         </div>
                     </div>
                     <div class="output-item">
-                        <label>Access Token Response:</label>
+                        <label>Access Token:</label>
                         <div class="output-value">
                             <code id="tokenResponseOutput" style="white-space: pre-wrap; word-break: break-all;"></code>
                             <button class="copy-btn" onclick="copyToClipboard('tokenResponseOutput')">
