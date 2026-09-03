@@ -67,14 +67,13 @@ function extractEATToken(url) {
     const patterns = [
         /[?&]eat=([^&]+)/i,
         /eat=([^&/]+)/i,
-        /([a-zA-Z0-9_-]+)(?=[?&]|$)/
     ];
 
     for (let pattern of patterns) {
         const match = url.match(pattern);
         if (match && match[1]) {
             const token = match[1];
-            if (token.length > 20 && !token.includes('http')) {
+            if (token.length > 10) {
                 return decodeURIComponent(token);
             }
         }
@@ -83,14 +82,33 @@ function extractEATToken(url) {
     return null;
 }
 
-// Extract URL Parameters
+// Extract URL Parameters - FIXED
 function extractParams(url) {
     const params = {};
-    const urlObj = new URL(url, 'http://example.com');
     
-    urlObj.searchParams.forEach((value, key) => {
-        params[key] = decodeURIComponent(value);
-    });
+    try {
+        // Try to parse as full URL
+        let urlObj;
+        if (url.startsWith('http')) {
+            urlObj = new URL(url);
+        } else {
+            // If not full URL, try to extract query string
+            urlObj = new URL('http://example.com' + (url.includes('?') ? url.substring(url.indexOf('?')) : '?' + url));
+        }
+        
+        urlObj.searchParams.forEach((value, key) => {
+            params[key] = decodeURIComponent(value);
+        });
+    } catch (e) {
+        // If URL parsing fails, try manual extraction
+        const queryMatch = url.match(/[?&]([^&=]+)=([^&]*)/g);
+        if (queryMatch) {
+            queryMatch.forEach(pair => {
+                const [key, value] = pair.replace(/[?&]/, '').split('=');
+                params[key] = decodeURIComponent(value || '');
+            });
+        }
+    }
 
     return params;
 }
