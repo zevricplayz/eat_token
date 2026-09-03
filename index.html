@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate Free Fire access tokens from Garena EAT tokens">
+    <title>Free Fire EAT Token Generator | Eat Token</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-fire"></i> Free Fire EAT Token Generator</h1>
+                <p>Extract and Generate Access Tokens from Garena Authentication URLs</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Instructions Section -->
+            <section class="instructions">
+                <h2>📖 How to Use</h2>
+                <div class="steps">
+                    <div class="step">
+                        <span class="step-number">1</span>
+                        <div>
+                            <h3>Login with Your Account</h3>
+                            <p>Select a provider and complete Garena authentication</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <div>
+                            <h3>Find Callback URL</h3>
+                            <p>Look for URLs containing <code>/callback/?eat=</code> in browser history</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <div>
+                            <h3>Paste and Generate</h3>
+                            <p>Paste the callback URL and click "Generate Access Token"</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Login Providers -->
+            <section class="providers">
+                <h2>🔐 Select Provider & Login</h2>
+                <div class="provider-grid">
+                    <button class="provider-btn google" title="Login with Google">
+                        <i class="fab fa-google"></i>
+                        <span>Google</span>
+                    </button>
+                    <button class="provider-btn facebook" title="Login with Facebook">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook</span>
+                    </button>
+                    <button class="provider-btn apple" title="Login with Apple">
+                        <i class="fab fa-apple"></i>
+                        <span>Apple</span>
+                    </button>
+                    <button class="provider-btn twitter" title="Login with X (Twitter)">
+                        <i class="fab fa-x-twitter"></i>
+                        <span>X (Twitter)</span>
+                    </button>
+                    <button class="provider-btn vk" title="Login with VK">
+                        <i class="fab fa-vk"></i>
+                        <span>VK</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Input Section -->
+            <section class="input-section">
+                <h2>🔗 Paste Callback URL</h2>
+                <div class="input-group">
+                    <textarea id="urlInput" class="url-input" placeholder="Paste your callback URL here...\n\nExample:\nhttps://api-ticket.ff.gameid.garena.co.id/oauth/callback/?eat=YOUR_EAT_TOKEN&lang=en&region=ID&account_id=123456&nickname=YourName" spellcheck="false"></textarea>
+                    <div class="button-group">
+                        <button id="generateBtn" class="btn btn-primary">
+                            <i class="fas fa-magic"></i> Generate Access Token
+                        </button>
+                        <button id="clearBtn" class="btn btn-secondary">
+                            <i class="fas fa-trash"></i> Clear
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Output Section -->
+            <section class="output-section" id="outputSection" style="display: none;">
+                <h2>✅ Generated Response</h2>
+                <div class="output-box">
+                    <div class="output-item">
+                        <label>EAT Token:</label>
+                        <div class="output-value">
+                            <code id="eatTokenOutput"></code>
+                            <button class="copy-btn" onclick="copyToClipboard('eatTokenOutput')">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="output-item">
+                        <label>Access Token Response:</label>
+                        <div class="output-value">
+                            <code id="tokenResponseOutput" style="white-space: pre-wrap; word-break: break-all;"></code>
+                            <button class="copy-btn" onclick="copyToClipboard('tokenResponseOutput')">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="output-item">
+                        <label>Full Response JSON:</label>
+                        <div class="output-value">
+                            <code id="fullResponseOutput" style="white-space: pre-wrap; word-break: break-all;"></code>
+                            <button class="copy-btn" onclick="copyToClipboard('fullResponseOutput')">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Warning Section -->
+            <section class="warning">
+                <h3>⚠️ Important Notice</h3>
+                <ul>
+                    <li>This tool is for educational purposes only</li>
+                    <li>Do not misuse tokens or violate Garena Terms & Conditions</li>
+                    <li>Avoid automated abuse of the system</li>
+                    <li>Use at your own risk</li>
+                </ul>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with <i class="fas fa-heart"></i> for Free Fire Community</p>
+            <p class="footer-text">Educational Tool | Not Affiliated with Garena</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
