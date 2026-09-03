@@ -9,7 +9,7 @@ const fullResponseOutput = document.getElementById('fullResponseOutput');
 const providerBtns = document.querySelectorAll('.provider-btn');
 
 // Event Listeners
-generateBt.addEventListener('click', generateToken);
+generateBtn.addEventListener('click', generateToken);
 clearBtn.addEventListener('click', clearAll);
 providerBtns.forEach(btn => {
     btn.addEventListener('click', handleProviderLogin);
